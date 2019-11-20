@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <title>Rates</title>
+</head>
+<body>
+    <script>
+        function GetRates(){
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if(this.readyState == 4 && this.status == 200) {
+                    document.getElementById("MostrarRates").innerHTML = this.responseText;
+                }
+            };
+            var Datos = document.getElementById("Datos").value;
+            if(Datos == 1){
+                xhttp.open("GET", "https://api.exchangeratesapi.io/latest", true);
+            }
+            else if(Datos == 2){
+                xhttp.open("GET", "https://api.exchangeratesapi.io/2010-01-12", true);
+            }
+            xhttp.send();
+        }
+        function GetRatesWell(){
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function () { 
+                if(this.readyState == 4 && this.status == 200) {
+                    document.getElementById("dataTable").innerHTML = "";
+                    var RatesArray = JSON.parse(this.responseText);
+                    $datos = $('#dataTable');
+                    $table = $('<table></table>');
+                    $table.append('<th>' + "Canadian Dolar(CAD)" + '</th>')
+                    $table.append('<th>' + "Hong Kong Dolar(HKD)" + '</th>')
+                    $table.append('<th>' + "Corona Islandesa(ISK)" + '</th>')
+                    $table.append('<th>' + "Peso Filipino(PHP)" + '</th>')
+                    $table.append('<th>' + "Corona Danesa(DKK)" + '</th>')
+                    $table.append('<th>' + "Florin Hungaro(HUF)" + '</th>')
+                    $table.append('<th>' + "Corona Checa(CZK)" + '</th>')
+                    $table.append('<th>' + "Australian Dolar(AUD)" + '</th>')
+                    $table.append('<th>' + "Romanian Leu(RON)" + '</th>')
+                    $table.append('<th>' + "Corona Sueca(SEK)" + '</th>')
+                    $table.append('<th>' + "Indonsesia Rupia(IDR)" + '</th>')
+                    $table.append('<th>' + "Indian Rupee(INR)" + '</th>')
+                    $table.append('<th>' + "Brasil Real Dolar(BRL)" + '</th>')
+                    $table.append('<th>' + "Rusian Ruble(RUB)" + '</th>')
+                    $table.append('<th>' + "Croatian Kuna(HRK)" + '</th>')
+                    $table.append('<th>' + "Japanese Yen(JPY)" + '</th>')
+                    $table.append('<th>' + "Thai Baht(THB)" + '</th>')
+                    $table.append('<th>' + "Franco de Suiza(CHF)" + '</th>')
+                    $table.append('<th>' + "Signapore Dollar(SGD)" + '</th>')
+                    $table.append('<th>' + "Polish Zloty(PLN)" + '</th>')
+                    $table.append('<th>' + "Bulgarian Lev(BGN)" + '</th>')
+                    $table.append('<th>' + "Turkish Lira(TRY)" + '</th>')
+                    $table.append('<th>' + "Chinese Yuan Renminbi(CNY)" + '</th>')
+                    $table.append('<th>' + "Norwegian Krone(NOK)" + '</th>')
+                    $table.append('<th>' + "New Zeland Dollar(NZD)" + '</th>')
+                    $table.append('<th>' + "South Adrican Rand(ZAR)" + '</th>')
+                    $table.append('<th>' + "United States Dollar(USD)" + '</th>')
+                    $table.append('<th>' + "Mexico Peso(MXN)" + '</th>')
+                    $table.append('<th>' + "Israeli Shekel(ILS)" + '</th>')
+                    $table.append('<th>' + "British Pound(GBP)" + '</th>')
+                    $table.append('<th>' + "South Korean Won(KRW)" + '</th>')
+                    $table.append('<th>' + "Ringgit Malayo(MYR)" + '</th>')
+                    $table.append('<th>' + "Euro(EUR)" + '</th>')
+                    $table.append($tr);
+                    for(var i = 0;i < RatesArray.length;i++){
+                        var $tr = $('<tr></tr>');
+                        $tr.append('<td>' + RatesArray[i].CAD + '</td>');
+                        $tr.append('<td>' + RatesArray[i].HKD + '</td>');
+                        $tr.append('<td>' + RatesArray[i].ISK + '</td>');
+                        $tr.append('<td>' + RatesArray[i].PHP + '</td>');
+                        $tr.append('<td>' + RatesArray[i].DKK + '</td>');
+                        $tr.append('<td>' + RatesArray[i].HUF + '</td>');
+                        $tr.append('<td>' + RatesArray[i].CZK + '</td>');
+                        $tr.append('<td>' + RatesArray[i].AUD + '</td>');
+                        $tr.append('<td>' + RatesArray[i].RON + '</td>');
+                        $tr.append('<td>' + RatesArray[i].SEK + '</td>');
+                        $tr.append('<td>' + RatesArray[i].IDR + '</td>');
+                        $tr.append('<td>' + RatesArray[i].INR + '</td>');
+                        $tr.append('<td>' + RatesArray[i].BRL + '</td>');
+                        $tr.append('<td>' + RatesArray[i].RUB + '</td>');
+                        $tr.append('<td>' + RatesArray[i].HRK + '</td>');
+                        $tr.append('<td>' + RatesArray[i].JPY + '</td>');
+                        $tr.append('<td>' + RatesArray[i].THB + '</td>');
+                        $tr.append('<td>' + RatesArray[i].CHF + '</td>');
+                        $tr.append('<td>' + RatesArray[i].SGD + '</td>');
+                        $tr.append('<td>' + RatesArray[i].PLN + '</td>');
+                        $tr.append('<td>' + RatesArray[i].BGN + '</td>');
+                        $tr.append('<td>' + RatesArray[i].TRY + '</td>');
+                        $tr.append('<td>' + RatesArray[i].CNY + '</td>');
+                        $tr.append('<td>' + RatesArray[i].NOK + '</td>');
+                        $tr.append('<td>' + RatesArray[i].NZD + '</td>');
+                        $tr.append('<td>' + RatesArray[i].ZAR + '</td>');
+                        $tr.append('<td>' + RatesArray[i].USD + '</td>');
+                        $tr.append('<td>' + RatesArray[i].MXN + '</td>');
+                        $tr.append('<td>' + RatesArray[i].ILS + '</td>');
+                        $tr.append('<td>' + RatesArray[i].GBP + '</td>');
+                        $tr.append('<td>' + RatesArray[i].KRW + '</td>');
+                        $tr.append('<td>' + RatesArray[i].MYR + '</td>');
+                        $tr.append('<td>' + RatesArray[i].EUR + '</td>');
+
+                        $table.append($tr);
+                    }
+                $datos.append($table);
+                }
+            }
+            xmlhttp.open("GET", "data/rates.json", true);
+            xmlhttp.send();
+        }
+    </script>
+</body>
+<input type="number" id="Datos" placeholder="1 => latest OR 2 => Since1999"/>
+<button id="GetRates" onclick="GetRates()">Get Rates</button>
+<button id="GetRatesBienMostrados" onclick="GetRatesWell()">Get Rates Ordenados</button>
+<div id="MostrarRates"></div>
+<div id="dataTable"></div>
+</html>
